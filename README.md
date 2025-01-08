@@ -153,19 +153,19 @@ python manage.py runserver
 Navigate to http://127.0.0.1:8000/api/schema/swagger-ui/ in your browser.
 
 API Endpoints
-Users:
+* Users:
 
-GET /api/users/: List all users. (Admin only)
+   * GET /api/users/: List all users. (Admin only)
 
-GET /api/users/<int:pk>: Get a specific user.(Admin only)
+   * GET /api/users/<int:pk>: Get a specific user.(Admin only)
 
-POST /api/users/: Create a new user. (Admin only)
+   * POST /api/users/: Create a new user. (Admin only)
 
-PUT /api/users/<int:pk>: Update a specific user.(Admin only)
+   * PUT /api/users/<int:pk>: Update a specific user.(Admin only)
 
-DELETE /api/users/<int:pk>: Delete a specific user.(Admin only)
+   * DELETE /api/users/<int:pk>: Delete a specific user.(Admin only)
 
-POST /api/token/: Obtain authentication tokens with a username and password.
+   * POST /api/token/: Obtain authentication tokens with a username and password.
 
 Expenses:
 
