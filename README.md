@@ -167,7 +167,7 @@ Navigate to http://127.0.0.1:8000/api/schema/swagger-ui/ in your browser.
 
    * POST /api/token/: Obtain authentication tokens with a username and password.
 
-* ***Expenses:***
+* ***Expenses***:
 
    * GET /api/expenses/: List all expenses for authenticated user.
 
@@ -181,7 +181,7 @@ Navigate to http://127.0.0.1:8000/api/schema/swagger-ui/ in your browser.
 
    * GET /api/expenses/monthly-analysis?month=<int>: Get monthly analysis report of the user.
 
-* ***Groups:***
+* ***Groups***:
 
    * GET /api/groups/: List all groups.
 
@@ -193,7 +193,7 @@ Navigate to http://127.0.0.1:8000/api/schema/swagger-ui/ in your browser.
 
    * DELETE /api/groups/<int:pk>: Delete specific group. (Owner/Admin only)
 
-* ***Settlements:***
+* ***Settlements***:
 
    * GET /api/settlements/: List all settlements.
 
