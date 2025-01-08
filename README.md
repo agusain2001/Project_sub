@@ -236,7 +236,7 @@ Navigate to http://127.0.0.1:8000/api/schema/swagger-ui/ in your browser.
 
    * default_payment_methods: (JSON) List of payment method details like UPI_ID.
 
-***Expense:***
+* ***Expense:***
 
    * id: (Integer) Unique identifier.
    
@@ -256,7 +256,7 @@ Navigate to http://127.0.0.1:8000/api/schema/swagger-ui/ in your browser.
 
    * group: (ForeignKey to Group) Group that the expense belong to.
 
-***Group:***
+* ***Group:***
 
    * id: (Integer) Unique identifier.
 
@@ -268,7 +268,7 @@ Navigate to http://127.0.0.1:8000/api/schema/swagger-ui/ in your browser.
 
    * created_by: (ForeignKey to User) User who created the group.
 
-***Settlement:***
+* ***Settlement:***
 
    * id: (Integer) Unique identifier.
 
@@ -286,7 +286,7 @@ Navigate to http://127.0.0.1:8000/api/schema/swagger-ui/ in your browser.
 
    * group: (ForeignKey to Group) Group that the settlement belong to.
 
-***Category:***
+* ***Category:***
 
    * id: (Integer) Unique identifier.
 
