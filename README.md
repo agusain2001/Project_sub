@@ -148,12 +148,12 @@ python manage.py migrate
 ```bash 
 python manage.py runserver
 ```
-6.2 *** Access the API documentation:***
+6.2 ***Access the API documentation:***
 
 Navigate to http://127.0.0.1:8000/api/schema/swagger-ui/ in your browser.
 
-API Endpoints
-* Users:
+** API Endpoints **
+* ***Users***:
 
    * GET /api/users/: List all users. (Admin only)
 
@@ -167,143 +167,143 @@ API Endpoints
 
    * POST /api/token/: Obtain authentication tokens with a username and password.
 
-Expenses:
+* ***Expenses:***
 
-GET /api/expenses/: List all expenses for authenticated user.
+   * GET /api/expenses/: List all expenses for authenticated user.
 
-POST /api/expenses/: Create a new expense.
+   * POST /api/expenses/: Create a new expense.
 
-GET /api/expenses/<int:pk>: Get a specific expense.
+   * GET /api/expenses/<int:pk>: Get a specific expense.
 
-PUT /api/expenses/<int:pk>: Update a specific expense.(Owner only)
+   * PUT /api/expenses/<int:pk>: Update a specific expense.(Owner only)
 
-DELETE /api/expenses/<int:pk>: Delete a specific expense. (Owner only)
+   * DELETE /api/expenses/<int:pk>: Delete a specific expense. (Owner only)
 
-GET /api/expenses/monthly-analysis?month=<int>: Get monthly analysis report of the user.
+   * GET /api/expenses/monthly-analysis?month=<int>: Get monthly analysis report of the user.
 
-Groups:
+* ***Groups:***
 
-GET /api/groups/: List all groups.
+   * GET /api/groups/: List all groups.
 
-POST /api/groups/: Create a new group.
+   * POST /api/groups/: Create a new group.
 
-GET /api/groups/<int:pk>: Get specific group.
+   * GET /api/groups/<int:pk>: Get specific group.
 
-PUT /api/groups/<int:pk>: Update specific group.(Owner/Admin only)
+   * PUT /api/groups/<int:pk>: Update specific group.(Owner/Admin only)
 
-DELETE /api/groups/<int:pk>: Delete specific group. (Owner/Admin only)
+   * DELETE /api/groups/<int:pk>: Delete specific group. (Owner/Admin only)
 
-Settlements:
+* ***Settlements:***
 
-GET /api/settlements/: List all settlements.
+   * GET /api/settlements/: List all settlements.
 
-POST /api/settlements/: Create a new settlement.
+   * POST /api/settlements/: Create a new settlement.
 
-GET /api/settlements/<int:pk>: Get a specific settlement.
+   * GET /api/settlements/<int:pk>: Get a specific settlement.
 
-PUT /api/settlements/<int:pk>: Update a specific settlement.(Owner/Admin only)
+   * PUT /api/settlements/<int:pk>: Update a specific settlement.(Owner/Admin only)
 
-DELETE /api/settlements/<int:pk>: Delete a specific settlement.(Owner/Admin only)
+   * DELETE /api/settlements/<int:pk>: Delete a specific settlement.(Owner/Admin only)
 
-GET /api/settlements/<int:pk>/suggestions: Get settlement suggestions for a group.
+   * GET /api/settlements/<int:pk>/suggestions: Get settlement suggestions for a group.
 
-Categories:
+* ***Categories:***
 
-GET /api/categories/: List all categories.
+   * GET /api/categories/: List all categories.
 
-POST /api/categories/: Create a new category. (Admin only)
+   * POST /api/categories/: Create a new category. (Admin only)
 
-GET /api/categories/<int:pk>: Get a specific category.(Admin only)
+   * GET /api/categories/<int:pk>: Get a specific category.(Admin only)
 
-PUT /api/categories/<int:pk>: Update a specific category. (Admin only)
+   * PUT /api/categories/<int:pk>: Update a specific category. (Admin only)
 
-DELETE /api/categories/<int:pk>: Delete a specific category. (Admin only)
+   * DELETE /api/categories/<int:pk>: Delete a specific category. (Admin only)
 
-Models
-User:
+** Models**
+* ***User:***
 
-id: (Integer) Unique identifier.
+   * id: (Integer) Unique identifier.
 
-username: (String) Username for login.
+   * username: (String) Username for login.
 
-password: (String) Password for login.
+   * password: (String) Password for login.
 
-email: (String) Email for registration
+   * email: (String) Email for registration
 
-college: (String) College name.
+   * college: (String) College name.
 
-semester: (String) Current semester.
+   * semester: (String) Current semester.
 
-default_payment_methods: (JSON) List of payment method details like UPI_ID.
+   * default_payment_methods: (JSON) List of payment method details like UPI_ID.
 
-Expense:
+***Expense:***
 
-id: (Integer) Unique identifier.
+   * id: (Integer) Unique identifier.
+   
+   * amount: (Decimal) Amount of the expense.
 
-amount: (Decimal) Amount of the expense.
+   * category: (ForeignKey to Category) Category of the expense.
 
-category: (ForeignKey to Category) Category of the expense.
+   * split_type: (String) Type of expense split (equal, unequal, or percentage).
 
-split_type: (String) Type of expense split (equal, unequal, or percentage).
+   * date: (Date) Date of the expense.
 
-date: (Date) Date of the expense.
+   * receipt_image: (ImageField) Image of the receipt.
 
-receipt_image: (ImageField) Image of the receipt.
+   * participants: (ManyToManyField) List of users who were part of the expense.
 
-participants: (ManyToManyField) List of users who were part of the expense.
+   * created_by: (ForeignKey to User) User who created the expense.
 
-created_by: (ForeignKey to User) User who created the expense.
+   * group: (ForeignKey to Group) Group that the expense belong to.
 
-group: (ForeignKey to Group) Group that the expense belong to.
+***Group:***
 
-Group:
+   * id: (Integer) Unique identifier.
 
-id: (Integer) Unique identifier.
+   * name: (String) Name of the group.
 
-name: (String) Name of the group.
+   * group_type: (String) Type of the group (e.g., hostel_roommates, project_teams).
 
-group_type: (String) Type of the group (e.g., hostel_roommates, project_teams).
+   * members: (ManyToManyField to User) List of members in the group.
 
-members: (ManyToManyField to User) List of members in the group.
+   * created_by: (ForeignKey to User) User who created the group.
 
-created_by: (ForeignKey to User) User who created the group.
+***Settlement:***
 
-Settlement:
+   * id: (Integer) Unique identifier.
 
-id: (Integer) Unique identifier.
+   * payer: (ForeignKey to User) User making the payment.
 
-payer: (ForeignKey to User) User making the payment.
+   * payee: (ForeignKey to User) User receiving the payment.
 
-payee: (ForeignKey to User) User receiving the payment.
+   * amount: (Decimal) Amount of the payment.
 
-amount: (Decimal) Amount of the payment.
+   * payment_status: (String) Status of the payment (pending or completed).
 
-payment_status: (String) Status of the payment (pending or completed).
+   * settlement_method: (String) Method of payment.
 
-settlement_method: (String) Method of payment.
+   * due_date: (Date) Due date of settlement.
 
-due_date: (Date) Due date of settlement.
+   * group: (ForeignKey to Group) Group that the settlement belong to.
 
-group: (ForeignKey to Group) Group that the settlement belong to.
+***Category:***
 
-Category:
+   * id: (Integer) Unique identifier.
 
-id: (Integer) Unique identifier.
+   * name: (String) Name of the category.
 
-name: (String) Name of the category.
+**Future Work**
+   * ***Unit Tests:*** Write comprehensive unit tests to ensure the code's reliability.
 
-Future Work
-Unit Tests: Write comprehensive unit tests to ensure the code's reliability.
+   * ***Email Verification:*** Implement email verification for user registration.
 
-Email Verification: Implement email verification for user registration.
+   * ***Smart bill scanning:*** If required, implement smart bill scanning using image processing.
 
-Smart bill scanning: If required, implement smart bill scanning using image processing.
+   * ***Code Refactoring and Optimization:*** Refactor code and improve the structure for better readability and performance.
 
-Code Refactoring and Optimization: Refactor code and improve the structure for better readability and performance.
+   * ***Complete Documentation:*** Document all the models and functionalities of the project.
 
-Complete Documentation: Document all the models and functionalities of the project.
-
-Contributing
+**Contributing**
 Contributions are welcome! Please feel free to submit a pull request.
 
 **Explanation of the `README.md`**
